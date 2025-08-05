@@ -45,3 +45,16 @@ git lfs track "*.psd"
 git rm --cached path/to/file
 git commit -m "Remove file from Git tracking"
 ```
+
+
+
+### Hard reset to origin/main
+
+```bash
+git reset --hard origin/main
+```
+
+This will:
+- Remove your local commits
+- Discard all staged and unstaged changes
+- Set your local branch to match origin/main exactly
