@@ -12,6 +12,13 @@ find . -type f -size -100M -exec git add {} +
 find . -type f -size +100M >> .git/info/exclude
 ```
 
+
+### Dynamically save large files to a file
+
+```bash
+find . -type f -size +100M >> large_files.txt
+```
+
 ### Remove existing origin
 
 ```bash
