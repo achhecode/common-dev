@@ -151,3 +151,43 @@ git config user.email
 ```
 
 Push test commits to confirm correct identity is used.
+
+
+---
+
+
+### Quick summary to add new git profile and push changes
+
+### Setting up new key
+
+```bash
+
+ssh-keygen -t ed25519 -C "danish.ar@feuji.com"
+
+# Enter file in which to save the key (C:\Users\danish.ar/.ssh/id_ed25519): C:\Users\danish.ar\.ssh\id_ed25519_feuji
+
+ssh-add ~/.ssh/id_ed25519_feuji
+
+nano ~/.ssh/config
+
+# Feuji Account
+Host github-feuji
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_feuji
+```
+### Pushing to branch
+
+```bash
+git config user.name "A R Danish"
+git config user.email "danish.ar@feuji.com"
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin git@github-feuji:SunStripe-Feuji/sun-stripe-feoc.git
+git push -u origin main
+```
+
+
+### Happy Coding
+## Achhe Code
