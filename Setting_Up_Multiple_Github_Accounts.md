@@ -153,6 +153,13 @@ git config user.email
 Push test commits to confirm correct identity is used.
 
 
+### Test SSH connection manually
+
+```bash
+ssh -T git@github-personal
+# You should see something like:
+## Hi USERNAME! You've successfully authenticated, but GitHub does not provide shell access.
+```
 ---
 
 
@@ -175,6 +182,7 @@ Host github-feuji
   HostName github.com
   User git
   IdentityFile ~/.ssh/id_ed25519_feuji
+
 ```
 ### Pushing to branch
 
@@ -186,7 +194,62 @@ git add .
 git commit -m "Initial commit"
 git remote add origin git@github-feuji:SunStripe-Feuji/sun-stripe-feoc.git
 git push -u origin main
+
+
+#optional
+#verify remote
+git remote -v
+# setting alias if not showing Host like git@github-personal and showing github.com
+git remote set-url origin git@github-personal:USERNAME/REPO.git
+
 ```
+
+---
+---
+---
+
+
+#### If facing issues while testing ssh connection
+```sh
+ssh -T git@github-personal
+ssh: connect to host github.com port 22: Operation timed out
+```
+This timeout means your system isn’t even reaching GitHub over SSH port 22 — so this isn’t about the wrong key, it’s a connectivity problem. Happens a lot on corporate networks, VPNs, or ISPs that block port 22.
+
+#### Option 1: Use SSH over HTTPS (port 443)
+
+Update `~/.ssh/config`:
+
+```ssh
+Host github-1
+    HostName ssh.github.com
+    User git
+    Port 443
+    IdentityFile ~/.ssh/id_ed25519_1
+    IdentitiesOnly yes
+
+Host github-2
+    HostName ssh.github.com
+    User git
+    Port 443
+    IdentityFile ~/.ssh/id_ed25519_2
+    IdentitiesOnly yes
+```
+
+
+#### Option 2: Use HTTPS remotes instead of SSH
+If SSH is blocked in environment and you can’t change it, switch your remote to HTTPS:
+```sh
+git remote set-url origin https://github.com/USERNAME/REPO.git
+```
+
+
+⚡ Quick test:
+Run:
+```sh
+nc -vz ssh.github.com 443
+```
+If it says `Connection to ssh.github.com port 443 [tcp/https] succeeded!`, then Option 1 will work for you.
 
 
 ### Happy Coding
