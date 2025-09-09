@@ -169,7 +169,7 @@ ssh -T git@github-personal
 
 ```bash
 
-ssh-keygen -t ed25519 -C "danish.ar@feuji.com"
+ssh-keygen -t ed25519 -C "danish.ar@test.com"
 
 # Enter file in which to save the key (C:\Users\danish.ar/.ssh/id_ed25519): C:\Users\danish.ar\.ssh\id_ed25519_feuji
 
@@ -188,7 +188,7 @@ Host github-feuji
 
 ```bash
 git config user.name "A R Danish"
-git config user.email "danish.ar@feuji.com"
+git config user.email "danish.ar@test.com"
 git init
 git add .
 git commit -m "Initial commit"
