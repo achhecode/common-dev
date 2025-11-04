@@ -1,3 +1,9 @@
+### Set Your Global Username and Email (first time git user)
+
+```sh
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
 
 ### ✅ 1. Generate SSH Keys for Both Accounts
 
