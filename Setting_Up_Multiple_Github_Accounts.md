@@ -70,6 +70,12 @@ cat ~/.ssh/id_ed25519_personal.pub
 cat ~/.ssh/id_ed25519_work.pub
 ```
 
+For Windows use below command in powershell:
+
+```sh
+gc ~/.ssh/id_ed25519_work.pub # or the exact path of the file
+```
+
 
 ### ✅ 4. Configure SSH `config` File
 
